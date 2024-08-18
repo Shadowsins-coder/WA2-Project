@@ -13,11 +13,13 @@ Let avid coders easily access different websites to revise and practise their co
 
 <b> How it's built:
 <br>
-<li>1.A home page that anybody can access
-2.In the home page there's allowing them to do reflections, see recent searches, and even lead them to websites for them to practice.
-3. Link referencing them to go to a even more advanced search!
-In the advanced search: Users are required to login if they do not have an account
-Then users can access advanced search and search some theories learnt in computing.</li>
+<ol>
+    <li>A home page that anybody can access</li>
+    <li>In the home page there's allowing them to do reflections, see recent searches, and even lead them to websites for them to practice.</li>
+    <li>Link referencing them to go to a even more advanced search!</li>
+    <li>In the advanced search: Users are required to login if they do not have an account</li>
+    <li>Then users can access advanced search and search some theories learnt in computing.</li>
+  </ol>
 
 
 <b> Challenges encountered:
