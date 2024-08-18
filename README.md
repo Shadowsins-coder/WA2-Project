@@ -1,8 +1,15 @@
-Inspiration<b>
+<b>Inspiration
 
-What it does
-How it's built
-Challenges encountered
-Accomplishments that I'm proud of
-What I learned
-What's next for <project title>
+<b>What it does(Description)
+
+<b> Purpose
+
+<b>How it's built
+
+<b> Challenges encountered
+
+<b> Accomplishments that I'm proud of
+
+<b> What I learned
+
+<b> What's next
