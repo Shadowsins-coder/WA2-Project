@@ -1,0 +1,44 @@
+entrypoint = "main.py"
+modules = ["python-3.11"]
+
+[nix]
+channel = "stable-24_05"
+
+[unitTest]
+language = "python3"
+
+[gitHubImport]
+requiredFiles = [".replit", "replit.nix"]
+
+[deployment]
+run = ["python3", "main.py"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 3218
+externalPort = 3003
+
+[[ports]]
+localPort = 4702
+externalPort = 3001
+
+[[ports]]
+localPort = 4902
+externalPort = 3000
+
+[[ports]]
+localPort = 4903
+externalPort = 8000
+
+[[ports]]
+localPort = 5000
+externalPort = 5000
+exposeLocalhost = true
+
+[[ports]]
+localPort = 8080
+externalPort = 80
+
+[[ports]]
+localPort = 8702
+externalPort = 3002

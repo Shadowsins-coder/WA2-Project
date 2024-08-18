@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Firebase Authentication</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <!--<script type="module" src="../static/js/register.js" defer></script>-->
+      <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+          import {getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+          // TODO: Add SDKs for Firebase products that you want to use
+          // https://firebase.google.com/docs/web/setup#available-libraries
+          
+          // Your web app's Firebase configuration
+          const firebaseConfig = {
+            apiKey: "AIzaSyBD8Z5cNlKII3CY2LXTeoO1OuLQ3vqjztI",
+            authDomain: "computing-dictionary.firebaseapp.com",
+            projectId: "computing-dictionary",
+            storageBucket: "computing-dictionary.appspot.com",
+            messagingSenderId: "2378784939",
+            appId: "1:2378784939:web:2ba4cf592baf93cfe417ee"
+          };
+          
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+          const auth = getAuth();
+          //submit button
+        
+        const submit = document.getElementById('submit');
+        submit.addEventListener("click", (e) => {
+            e.preventDefault()
+            //inputs
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed up 
+              const user = userCredential.user;
+              alert("Creating Account...")
+              window.location.href = "/login_page";
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert(errorMessage)
+              // ..
+            });
+        })
+      </script>
+  </head>
+  <body>
+      <h1>Create Account</h1>
+      <label for="username">Username</label>
+      <input type="email" placeholder="Email" id="email" required>
+      <br><br>
+      <label for="password">Password</label>
+      <input type="password" placeholder="Password" id="password" required>
+      <br><br>
+      <button id="submit" type="submit">Create Account</button>
+  </body>
+</html>

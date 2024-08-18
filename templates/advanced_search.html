@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <title>Computing definition search</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+    import {getAuth, signOut} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBD8Z5cNlKII3CY2LXTeoO1OuLQ3vqjztI",
+      authDomain: "computing-dictionary.firebaseapp.com",
+      projectId: "computing-dictionary",
+      storageBucket: "computing-dictionary.appspot.com",
+      messagingSenderId: "2378784939",
+      appId: "1:2378784939:web:2ba4cf592baf93cfe417ee"
+    };
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+    
+    const submit = document.getElementById('submit');
+    submit.addEventListener("click", (e) => {
+        e.preventDefault()
+        signOut(auth).then(() => {
+          alert("Loggin out...")
+          window.location.href = "/logout";
+          // Sign-out successful.
+        }).catch((error) => {
+          // An error happened.
+        });
+      })
+  </script>
+</head>
+<body>
+  <h1>Ask a Question</h1>
+  <form action="/searching" method="POST">
+    <label for="search2">Enter Search Query:</label>
+    <input type="text" id="search2" name = "search2" placeholder="Search">
+    <br><br>
+    <input type="submit" value="Search">
+  </form>
+  <hr>
+    {% if result %}
+    <table border="1" id="resultsTable">
+      <tr class="result-row">
+          <th>Search</th>
+          <th>Answer</th>
+      </tr>
+      {% for row in result %}
+          <tr class="result-row">
+              <td>{{ row['search_object'] }}</td>
+              <td>{{ row['definition'] }}</td>
+          </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No results found.</p>
+    {% endif %}
+  </table>
+  
+  <hr>
+  
+  <button id="submit" type="submit">Logout</button>
+</body>
+</html>

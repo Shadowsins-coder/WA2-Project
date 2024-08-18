@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Edit Reflection</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Edit Reflection</h1>
+
+  <form action="/update/{{ index }}" method="POST">
+    <label for="program">Enter Programming Language:</label>
+    <select id="program" name="program">
+      <option value="HTML" {% if reflection[0] == 'HTML' %}selected{% endif %}>HTML</option>
+      <option value="CSS" {% if reflection[0] == 'CSS' %}selected{% endif %}>CSS</option>
+      <option value="Python" {% if reflection[0] == 'Python' %}selected{% endif %}>Python</option>
+      <option value="Javascript" {% if reflection[0] == 'Javascript' %}selected{% endif %}>Javascript</option>
+      <option value="Flask" {% if reflection[0] == 'Flask' %}selected{% endif %}>Flask</option>
+      <option value="SQL" {% if reflection[0] == 'SQL' %}selected{% endif %}>SQL</option>
+      <option value="Data" {% if reflection[0] == 'Data' %}selected{% endif %}>Theory</option>
+    </select>
+    <br><br>
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="date" value="{{ reflection[1] }}" required><br><br>
+    <label for="ask">What I asked:</label>
+    <input type="text" id="ask" name="ask" value="{{ reflection[2] }}" required><br><br>
+    <label for="reflections">What I learned:</label>
+    <textarea id="reflections" name="reflections" required>{{ reflection[3] }}</textarea><br><br>
+    <input type="submit" value="Update">
+  </form>
+  <a href="/">Back to home</a>
+</body> 
+</html>

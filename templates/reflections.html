@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Reflections Tracker</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+ <body>
+  <h1>My Reflections</h1>
+  <table>
+    <tr>
+      <th>Programming Langauge/Theory</th>
+      <th>Date</th>
+      <th>What I asked</th>
+      <th>What I have learnt</th>
+      <th>Action</th>
+    </tr> 
+
+    {% for item in reflection_data %}
+    <tr>
+      <td>{{ item[0] }}</td>
+      <td>{{ item[1] }}</td>
+      <td>{{ item[2] }}</td>
+      <td>{{ item[3] }}</td>
+      <td>
+        <form action="/edit/{{ loop.index0 }}" method="GET" style="display:inline;">
+          <input type="submit" value="Edit">
+        </form>
+      </td>
+     </tr>
+    {% endfor %}
+  </table>
+
+  <h2>Add Reflections</h2>
+  <form action="/add" method="POST">
+    <label for="program">Enter Programming Language:</label>
+    <select id="program" name = "program" list= "suggestions" placeholder="HTML, Python, Javascript....">
+      <option value="HTML" {% if program == 'HTML' %}selected{% endif %}>HTML</option>
+      <option value="CSS" {% if program == 'CSS' %}selected{% endif %}>CSS</option>
+      <option value="Python" {% if program == 'Python' %}selected{% endif %}>Python</option>
+      <option value="Javascript" {% if program == 'Javascript' %}selected{% endif %}>Javascript</option>
+      <option value="Flask" {% if program == 'Flask' %}selected{% endif %}>Flask</option>
+      <option value="SQL" {% if program == 'SQL' %}selected{% endif %}>SQL</option>
+      <option value="Data" {% if program == 'Data' %}selected{% endif %}>Theory</option>
+    </select>
+    <br><br>
+    <label for="date">Date:</label>
+    <input type="text" id="date" name="date" required><br><br>
+    <label for="ask">What I asked:</label>
+    <input type="text" id="ask" name="ask" required><br><br>
+    <label for="reflections">What I learnt:</label>
+    <textarea id="reflections" name="reflections" required></textarea><br><br>
+    <input type="submit" value="Submit">
+
+  </form>
+  <a href="/">Back to home</a>
+ </body> 
+</html>

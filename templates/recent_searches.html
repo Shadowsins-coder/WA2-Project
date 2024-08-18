@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Recent Searches</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Recent Searches</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Search Term</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in recent_data %}
+            <tr>
+                <td>{{ row['search_term'] }}</td>
+                <td>{{ row['timestamp'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<hr>
+<a href="/">Back to Home</a>
+</body>
+</html>
